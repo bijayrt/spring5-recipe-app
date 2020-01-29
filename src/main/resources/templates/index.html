@@ -2,9 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Recipe Home</title>
 </head>
 <body>
-<h1>My Recipes! This looks yummy!! LiveReload plugin is Great for checking the changes on live basis!!!!. Great Plugin. Don't forget!</h1>
+<h1>My Recipes!!</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="recipe: ${recipes}">
+        <td th:text="${recipe.id}">123</td>
+        <td th:text="${recipe.description}">Tastu Goodness</td>
+    </tr>
+</table>
 </body>
 </html>
