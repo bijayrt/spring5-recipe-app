@@ -16,7 +16,9 @@ public class Category {
     private Long id;
     private String description;
 
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "categories")
+    //, fetch = FetchType.EAGER) -- either use fetchType=EAGER or use of @Transactional annotation at the
+    // startup resolved the lazy initialization issue.
     private Set<Recipe> recipes;
 
 }
