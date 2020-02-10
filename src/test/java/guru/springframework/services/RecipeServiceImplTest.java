@@ -5,6 +5,7 @@ import guru.springframework.repositories.RecipeRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -16,6 +17,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
 /* BTuladhar created on 1/29/2020 */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RecipeServiceImplTest {
 
     RecipeServiceImpl recipeService;
@@ -25,14 +27,14 @@ public class RecipeServiceImplTest {
 
 
     @BeforeAll
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         recipeService = new RecipeServiceImpl(recipeRepository);
     }
 
     @Test
-    public void getRecipeByIdTest() throws Exception {
+    void getRecipeByIdTest() throws Exception {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
@@ -47,7 +49,7 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void getRecipesTest() throws Exception {
+    void getRecipesTest() throws Exception {
 
         Recipe recipe = new Recipe();
         HashSet receipesData = new HashSet();

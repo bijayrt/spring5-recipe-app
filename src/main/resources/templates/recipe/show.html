@@ -99,7 +99,11 @@
                                     <li th:remove="all">1 Teaspoon of chocolate</li>
                                     <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
                                     <li th:each="ingredient : ${recipe.ingredients}"
-                                        th:text="${ingredient.getDescription()}">1 Teaspoon of Sugar
+                                        th:text="${(ingredient.getAmount() +
+                                         ' '+ ingredient.uom.getDescription() +
+                                         '  -  '+ ingredient.getDescription())}">1 Teaspoon
+                                        of
+                                        Sugar
                                     </li>
                                 </ul>
                             </div>
